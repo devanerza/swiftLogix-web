@@ -1,26 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <title>StaticCMS Admin</title>
-    <script>
-      window.addEventListener('load', function () {
-        const script = document.createElement('script');
-        script.src = 'https://unpkg.com/@staticcms/app@^2.0.0/dist/index.umd.js';
-        script.onload = () => {
-          if (window.StaticCMS && typeof window.StaticCMS.init === 'function') {
-            window.StaticCMS.init();
-          } else {
-            console.error('StaticCMS object exists but init() is missing.');
-          }
-        };
-        script.onerror = () => {
-          console.error('Failed to load StaticCMS script.');
-        };
-        document.body.appendChild(script);
-      });
-    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/@staticcms/app@^4.0.0/dist/main.css" />
+    <title>Content Manager</title>
   </head>
   <body>
+    <!-- Include the script that builds the page and powers Static CMS -->
+    <script src="https://unpkg.com/@staticcms/app@^4.0.0/dist/static-cms-app.js"></script>
+    <script>
+      window.CMS.init();
+    </script>
   </body>
 </html>
