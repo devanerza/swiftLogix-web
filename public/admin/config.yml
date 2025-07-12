@@ -1,0 +1,20 @@
+backend:
+  name: github
+  repo: devanerza/swiftLogix-web
+  branch: main
+  auth_type: implicit
+  app_id: Ov23lieg92FIeA8DZVr8
+
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "articles"
+    label: "Articles"
+    folder: "articles"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
