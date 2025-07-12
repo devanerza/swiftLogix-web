@@ -3,18 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <title>StaticCMS Admin</title>
-    <script src="https://unpkg.com/@staticcms/app@^2.0.0/dist/index.umd.js"></script>
-  </head>
-  <body>
     <script>
-      // Wait until the StaticCMS global is available before calling init
       window.addEventListener('load', function () {
-        if (window.StaticCMS && typeof window.StaticCMS.init === 'function') {
-          window.StaticCMS.init();
-        } else {
-          console.error("StaticCMS failed to load.");
-        }
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/@staticcms/app@^2.0.0/dist/index.umd.js';
+        script.onload = () => {
+          if (window.StaticCMS && typeof window.StaticCMS.init === 'function') {
+            window.StaticCMS.init();
+          } else {
+            console.error('StaticCMS object exists but init() is missing.');
+          }
+        };
+        script.onerror = () => {
+          console.error('Failed to load StaticCMS script.');
+        };
+        document.body.appendChild(script);
       });
     </script>
+  </head>
+  <body>
   </body>
 </html>
